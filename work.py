@@ -248,7 +248,7 @@ elif choice=="Colour Detection":
 							r = int(r)
 
 			# creating window
-			cv2.namedWindow('image', cv2.WINDOW_NORMAL)
+			#cv2.namedWindow('image', cv2.WINDOW_NORMAL)
 			cv2.setMouseCallback('image', draw_function)
 
 			while True:
