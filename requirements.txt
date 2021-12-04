@@ -1,4 +1,4 @@
-taltair==4.1.0
+ataltair==4.1.0
 argon2-cffi==21.1.0
 astor==0.8.1
 attrs==21.2.0
