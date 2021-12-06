@@ -21,13 +21,6 @@ from PIL import Image
 
 
 st.set_page_config(layout="wide")
-
-
-
-
-
-
-
 st.title("Phycoscrapper")
 
 activities = ["Upload Data","Colour Detection","About"]
@@ -192,8 +185,8 @@ elif choice=='About':
 	st.subheader('Introduction')
 	st.write("""Phyco means relating to ALGAE. This device helps to collect terrestrial algae,measure the  the surrounding habitat temperature of the algae,the humidity of the surroundings and the light intensity at the place.
 			""")
-	img1=Image.open('PHYCOBOT.jpg')
-	st.image(img1,width=800,caption='Flow Chart')
+	img1=Image.open('PHYCOBOT.jpeg')
+	st.image(img1,width=800,caption='Electronics Part')
 
 	st.subheader('Brief Idea of Working')
 	st.write("""
