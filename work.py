@@ -14,7 +14,6 @@ from io import BytesIO
 import cv2
 import pandas as pd
 import numpy as np
-from PIL import Image
 
 #from plotly.offline import download_plotlyjs,init_notebook_mode, plot, iplot
 #cf.go_offline()
