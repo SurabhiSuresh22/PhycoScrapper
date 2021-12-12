@@ -193,7 +193,7 @@ elif choice=="Colour Detection":
 
 			# reading image
 			img = cv2.imread(img_path)
-			img = cv2.resize(img, (800,600))
+			#img = cv2.resize(img, (800,600))
 			
 
 
