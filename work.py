@@ -14,6 +14,10 @@ from io import BytesIO
 import cv2
 import pandas as pd
 import numpy as np
+from PIL import Image
+
+#from plotly.offline import download_plotlyjs,init_notebook_mode, plot, iplot
+#cf.go_offline()
 
 
 st.set_page_config(layout="wide")
@@ -34,6 +38,9 @@ if choice=='Upload Data':
 		l=len(df)
 		df['index']=list(range(1,l+1))
 		df.set_index('index',inplace=True)
+
+
+			
 
 		option=st.sidebar.radio("Study Data",['Data','Analyse','Light Intensity', 'Temperature of Algae', 'Humidity in %', 'Temperature in C','Temperature in F', 'Heat Index in C', 'Heat Index in F','Data Summary','Download as CSV'])
 
@@ -145,6 +152,17 @@ if choice=='Upload Data':
 				st.plotly_chart(fig,use_container_width=True)
 
 
+				
+				#altairchart
+				#f=alt.Chart(df).mark_circle().encode(x='Temperature', y='Humidity', tooltip=['Temperature', 'Humidity'])
+				#st.altair_chart(f,use_container_width=True)
+
+				# st.subheader('Distributive Plot')
+				# hist_data = [df['Temperature in C'],df['Humidity in %']] 
+				# group_labels=['Temperature in C','Humidity in %',]
+				# fig = ff.create_distplot(hist_data, group_labels, bin_size=[5,5])	
+				# st.plotly_chart(fig, use_container_width=True)	
+
 					
 		elif option=='Data Summary':				
 			st.table(df.describe())
@@ -193,7 +211,7 @@ elif choice=="Colour Detection":
 
 			# reading image
 			img = cv2.imread(img_path)
-			#img = cv2.resize(img, (800,600))
+			img = cv2.resize(img, (800,600))
 			
 
 
@@ -225,11 +243,12 @@ elif choice=="Colour Detection":
 							r = int(r)
 
 			# creating window
-			cv2.namedWindow('image')
-			cv2.setMouseCallback('image', draw_function)
+			#cv2.namedWindow('image')
+			
 
 			while True:
 					cv2.imshow('image', img)
+					cv2.setMouseCallback('image', draw_function)
 					if clicked:
 							#cv2.rectangle(image, startpoint, endpoint, color, thickness)-1 fills entire rectangle 
 							cv2.rectangle(img, (20,20), (600,60), (b,g,r), -1)
@@ -248,6 +267,10 @@ elif choice=="Colour Detection":
 
 			cv2.destroyAllWindows()
 
+
+		
+			
+	
 
 		
 			
