@@ -15,11 +15,9 @@ import cv2
 import pandas as pd
 import numpy as np
 
-#from plotly.offline import download_plotlyjs,init_notebook_mode, plot, iplot
-#cf.go_offline()
-
 
 st.set_page_config(layout="wide")
+
 st.title("Phycoscrapper")
 
 activities = ["Upload Data","Colour Detection","About"]
@@ -36,9 +34,6 @@ if choice=='Upload Data':
 		l=len(df)
 		df['index']=list(range(1,l+1))
 		df.set_index('index',inplace=True)
-
-
-			
 
 		option=st.sidebar.radio("Study Data",['Data','Analyse','Light Intensity', 'Temperature of Algae', 'Humidity in %', 'Temperature in C','Temperature in F', 'Heat Index in C', 'Heat Index in F','Data Summary','Download as CSV'])
 
@@ -150,17 +145,6 @@ if choice=='Upload Data':
 				st.plotly_chart(fig,use_container_width=True)
 
 
-				
-				#altairchart
-				#f=alt.Chart(df).mark_circle().encode(x='Temperature', y='Humidity', tooltip=['Temperature', 'Humidity'])
-				#st.altair_chart(f,use_container_width=True)
-
-				# st.subheader('Distributive Plot')
-				# hist_data = [df['Temperature in C'],df['Humidity in %']] 
-				# group_labels=['Temperature in C','Humidity in %',]
-				# fig = ff.create_distplot(hist_data, group_labels, bin_size=[5,5])	
-				# st.plotly_chart(fig, use_container_width=True)	
-
 					
 		elif option=='Data Summary':				
 			st.table(df.describe())
@@ -209,6 +193,7 @@ elif choice=="Colour Detection":
 
 			# reading image
 			img = cv2.imread(img_path)
+			img = cv2.resize(img, (800,600))
 			
 
 
