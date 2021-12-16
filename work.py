@@ -196,9 +196,8 @@ elif choice=='About':
 
 elif choice=="Colour Detection":
 	st.subheader('Color Detector')
-        st.write("""Click the button below to open the color detector app""")
-
-        link = '[Color Detector](https://colordetectorapp.herokuapp.com/)'
-        st.markdown(link, unsafe_allow_html=True)
+	st.write("""Click the button below to open the color detector app""")
+	link = '[Color Detector](https://colordetectorapp.herokuapp.com/)'
+	st.markdown(link, unsafe_allow_html=True)
 		
 	
