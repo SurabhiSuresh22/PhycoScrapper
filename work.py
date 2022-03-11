@@ -131,9 +131,9 @@ if choice=='Upload Data':
 				fig=df.iplot(asFigure=True,x='Temperature in F',y='Humidity in %',z='index',xTitle='Temperature in F',yTitle='Humidity in %',title='Temperature (F) v/s Humidity (%)' )
 				st.plotly_chart(fig,use_container_width=True)
 
-			elif key=='Temperature (C) v/s Heat Index (F)':
-				fig=df.iplot(asFigure=True,x='Temperature in F',y='Heat Index in F',z='index',xTitle='Temperature in F',yTitle='Heat Index in F',title='Temperature (F) v/s Heat Index (F)' )
-				st.plotly_chart(fig,use_container_width=True)
+# 			elif key=='Temperature (C) v/s Heat Index (F)':
+# 				fig=df.iplot(asFigure=True,x='Temperature in F',y='Heat Index in F',z='index',xTitle='Temperature in F',yTitle='Heat Index in F',title='Temperature (F) v/s Heat Index (F)' )
+# 				st.plotly_chart(fig,use_container_width=True)
 
 					
 		elif option=='Data Summary':				
@@ -164,7 +164,7 @@ elif choice=='About':
 			The MCU is known as the heart of an embedded system.It coordinates the working of all components efficiently.We have used Arduino Uno here as the MC.The different sensors used here are:Temperature and humidity sensor and Light intensity sensor.We also have used a camera module.The readings of the sensors and the picture captured are sent to the Arduino which process  the data and sends it to the SD Card module.The SD Card module can be read using a PC and the data collected will be tabulated and arranged with the help of a web app.
 """)
 
-elif choice=="Green Area Detection":
+elif choice=="Color Detection":
 	st.subheader('Green Area Detection')
 	st.write("""Click the button below to open the green area detector app""")
 	link = '[Green Area Detector](https://colordetectorapp.herokuapp.com/)'
