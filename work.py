@@ -164,10 +164,9 @@ elif choice=='About':
 			The MCU is known as the heart of an embedded system.It coordinates the working of all components efficiently.We have used Arduino Uno here as the MC.The different sensors used here are:Temperature and humidity sensor and Light intensity sensor.We also have used a camera module.The readings of the sensors and the picture captured are sent to the Arduino which process  the data and sends it to the SD Card module.The SD Card module can be read using a PC and the data collected will be tabulated and arranged with the help of a web app.
 """)
 
-elif choice=="Color Detection":
-	st.subheader('Green Area Detection')
-	st.write("""Click the button below to open the green area detector app""")
+elif choice=="Colour Detection":
+	st.subheader('Color Detector')
+	st.write("""Click the button below to open the color detector app""")
 	link = '[Color Detector](https://colordetectorapp.herokuapp.com/)'
 	st.markdown(link, unsafe_allow_html=True)
-		
 	
