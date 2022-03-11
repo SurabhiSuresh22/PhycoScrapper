@@ -16,12 +16,7 @@ import pandas as pd
 import numpy as np
 from PIL import Image
 
-#from plotly.offline import download_plotlyjs,init_notebook_mode, plot, iplot
-#cf.go_offline()
-
-
 st.set_page_config(layout="wide")
-
 st.title("Phycoscrapper")
 
 activities = ["Upload Data","Colour Detection","About"]
@@ -39,11 +34,7 @@ if choice=='Upload Data':
 		df['index']=list(range(1,l+1))
 		df.set_index('index',inplace=True)
 
-
-			
-
 		option=st.sidebar.radio("Study Data",['Data','Analyse','Light Intensity', 'Temperature of Algae', 'Humidity in %', 'Temperature in C','Temperature in F', 'Heat Index in C', 'Heat Index in F','Data Summary','Download as CSV'])
-
 		if option=='Data':
 			st.table(df)
 
@@ -96,8 +87,7 @@ if choice=='Upload Data':
 				with col2:
 					st.subheader('Bar Chart')
 					st.bar_chart(df['Humidity in %'])	
-				
-
+			
 		elif option=='Light Intensity':
 			with st.container():
 				col1, col2 = st.columns(2)
@@ -107,7 +97,6 @@ if choice=='Upload Data':
 				with col2:
 					st.subheader('Bar Chart')
 					st.bar_chart(df['Light Intensity'])
-
 				
 		elif option=='Temperature of Algae':
 			with st.container():
@@ -120,13 +109,8 @@ if choice=='Upload Data':
 					st.bar_chart(df['Temperature of Algae'])
 
 		elif option=='Analyse':
-
-					
-
 			st.header('Analyse')
-
 			key=st.radio('Select',['Line Chart','Temperature of Algae v/s Light Intensity','Temperature (C) v/s Humidity (%)','Temperature (C) v/s Heat Index (C)','Temperature (F) v/s Humidity (%)','Temperature (F) v/s Heat Index (F)'])
-
 
 			if key=='Line Chart':
 				st.line_chart(df,use_container_width=True)
@@ -151,24 +135,11 @@ if choice=='Upload Data':
 				fig=df.iplot(asFigure=True,x='Temperature in F',y='Heat Index in F',z='index',xTitle='Temperature in F',yTitle='Heat Index in F',title='Temperature (F) v/s Heat Index (F)' )
 				st.plotly_chart(fig,use_container_width=True)
 
-
-				
-				#altairchart
-				#f=alt.Chart(df).mark_circle().encode(x='Temperature', y='Humidity', tooltip=['Temperature', 'Humidity'])
-				#st.altair_chart(f,use_container_width=True)
-
-				# st.subheader('Distributive Plot')
-				# hist_data = [df['Temperature in C'],df['Humidity in %']] 
-				# group_labels=['Temperature in C','Humidity in %',]
-				# fig = ff.create_distplot(hist_data, group_labels, bin_size=[5,5])	
-				# st.plotly_chart(fig, use_container_width=True)	
-
 					
 		elif option=='Data Summary':				
 			st.table(df.describe())
 
 		elif option=='Download as CSV':
-
 			def get_table_download_link_csv(df):
 				#csv = df.to_csv(index=False)
 				csv = df.to_csv().encode()
@@ -176,7 +147,6 @@ if choice=='Upload Data':
 				b64 = base64.b64encode(csv).decode()
 				href = f'<a href="data:file/csv;base64,{b64}" download="data.csv" target="_blank">Download csv file</a>'
 				return href
-
 
 			st.markdown(get_table_download_link_csv(df), unsafe_allow_html=True)
 
@@ -194,10 +164,10 @@ elif choice=='About':
 			The MCU is known as the heart of an embedded system.It coordinates the working of all components efficiently.We have used Arduino Uno here as the MC.The different sensors used here are:Temperature and humidity sensor and Light intensity sensor.We also have used a camera module.The readings of the sensors and the picture captured are sent to the Arduino which process  the data and sends it to the SD Card module.The SD Card module can be read using a PC and the data collected will be tabulated and arranged with the help of a web app.
 """)
 
-elif choice=="Colour Detection":
-	st.subheader('Color Detector')
-	st.write("""Click the button below to open the color detector app""")
-	link = '[Color Detector](https://colordetectorapp.herokuapp.com/)'
+elif choice=="Green Area Detection":
+	st.subheader('Green Area Detection')
+	st.write("""Click the button below to open the green area detector app""")
+	link = '[Green Area Detector](https://colordetectorapp.herokuapp.com/)'
 	st.markdown(link, unsafe_allow_html=True)
 		
 	
