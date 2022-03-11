@@ -110,7 +110,7 @@ if choice=='Upload Data':
 
 		elif option=='Analyse':
 			st.header('Analyse')
-			key=st.radio('Select',['Line Chart','Temperature of Algae v/s Light Intensity','Temperature (C) v/s Humidity (%)','Temperature (C) v/s Heat Index (C)','Temperature (F) v/s Humidity (%)','Temperature (F) v/s Heat Index (F)'])
+			key=st.radio('Select',['Line Chart','Temperature of Algae v/s Light Intensity','Temperature (C) v/s Humidity (%)','Temperature (C) v/s Heat Index (C)','Temperature (F) v/s Humidity (%)'])
 
 			if key=='Line Chart':
 				st.line_chart(df,use_container_width=True)
