@@ -3,7 +3,7 @@ import streamlit.components.v1 as components
 import pandas as pd
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
-from PIL import Image
+from PIL import Image,ImageOps
 import datetime
 import time
 import cufflinks as cf
@@ -14,12 +14,13 @@ from io import BytesIO
 import cv2
 import pandas as pd
 import numpy as np
-from PIL import Image
+import keras
+from keras.models import load_model
 
 st.set_page_config(layout="wide")
 st.title("Phycoscrapper")
 
-activities = ["Upload Data","Colour Detection","About"]
+activities = ["Upload Data","Colour Detection","About","Algae Classification"]
 choice = st.sidebar.selectbox("Select Activty",activities)
 
 if choice=='Upload Data':
@@ -170,3 +171,32 @@ elif choice=="Colour Detection":
 	link = '[Color Detector](https://colordetectorapp.herokuapp.com/)'
 	st.markdown(link, unsafe_allow_html=True)
 	
+elif choice=="Algae Classification":
+	st.title("Algae Classification")
+	st.header("Algae Classification based on Color")
+	st.text("Upload an image(.jpg or .jpeg) for image classification as Red or Green Algae")
+
+	dic = {0 : 'red', 1 : 'green'}
+
+	def teachable_machine_classification(img,  weights_file):
+	    model = keras.models.load_model(weights_file)
+	    size = (224, 224)
+	    img = ImageOps.fit(img, size, Image.ANTIALIAS)
+	    img = np.asarray(img) 
+	    img = img / 255 
+	    img = img.reshape(1, 224,224,3)
+	    p = np.argmax(model.predict(img), axis=1)
+	    return p 
+
+	uploaded_file = st.file_uploader("Choose an image ...", type=["jpg","jpeg"])
+	if uploaded_file is not None:
+		image = Image.open(uploaded_file)
+		st.image(image, caption='Uploaded Image.', use_column_width=True)
+		st.write("")
+		st.write("Classifying...")
+		p = teachable_machine_classification(image, 'keras_model.h5')
+		prediction = dic[p[0]]
+		if prediction == 'red':
+		    st.markdown('This is likely to be a Red Algae')
+		elif prediction == 'green':
+		    st.markdown('This is more likely to be a Green Algae.')
