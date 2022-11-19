@@ -200,3 +200,14 @@ elif choice=="Algae Classification":
 		    st.markdown('This is likely to be a Red Algae')
 		elif prediction == 'green':
 		    st.markdown('This is more likely to be a Green Algae.')
+
+elif choice=="Get Location":
+	lat = st.number_input(label="Enter the latitude: ",format="%.4f")
+	st.write(lat)
+	long = st.number_input(label="Enter the longitude: ",format="%.4f")
+	st.write(long)
+	
+	map_data = pd.DataFrame({'lat': [lat], 'lon': [long]})
+	st.map(map_data) 
+
+
