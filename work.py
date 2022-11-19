@@ -20,7 +20,7 @@ from keras.models import load_model
 st.set_page_config(layout="wide")
 st.title("Phycoscrapper")
 
-activities = ["Upload Data","Colour Detection","About","Algae Classification"]
+activities = ["Upload Data","Colour Detection","About","Algae Classification","Get Location"]
 choice = st.sidebar.selectbox("Select Activty",activities)
 
 if choice=='Upload Data':
